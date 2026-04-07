@@ -1,0 +1,194 @@
+{
+  "generated_at": "2026-04-07T17:55:26.484243+00:00",
+  "trading_start_date": "2026-03-14",
+  "live_trading_start_date": null,
+  "summary": {
+    "total_return_pct": 2.32,
+    "sharpe_ratio": null,
+    "max_drawdown_pct": -0.51,
+    "win_rate_pct": 100.0,
+    "total_trades": 16,
+    "avg_hold_days": 0.0,
+    "current_equity": 102321.47,
+    "starting_equity": 100000
+  },
+  "equity_curve": [
+    {
+      "date": "2026-03-14",
+      "portfolio": 100.0
+    },
+    {
+      "date": "2026-03-17",
+      "portfolio": 100.0
+    },
+    {
+      "date": "2026-03-18",
+      "portfolio": 100.0
+    },
+    {
+      "date": "2026-03-19",
+      "portfolio": 100.0
+    },
+    {
+      "date": "2026-03-20",
+      "portfolio": 100.36
+    },
+    {
+      "date": "2026-03-21",
+      "portfolio": 99.88
+    },
+    {
+      "date": "2026-03-24",
+      "portfolio": 100.29
+    },
+    {
+      "date": "2026-03-25",
+      "portfolio": 100.77
+    },
+    {
+      "date": "2026-03-26",
+      "portfolio": 100.86
+    },
+    {
+      "date": "2026-03-27",
+      "portfolio": 100.67
+    },
+    {
+      "date": "2026-03-28",
+      "portfolio": 100.59
+    },
+    {
+      "date": "2026-03-31",
+      "portfolio": 100.35
+    },
+    {
+      "date": "2026-04-01",
+      "portfolio": 101.24
+    },
+    {
+      "date": "2026-04-02",
+      "portfolio": 101.69
+    },
+    {
+      "date": "2026-04-03",
+      "portfolio": 101.98
+    },
+    {
+      "date": "2026-04-07",
+      "portfolio": 102.32
+    }
+  ],
+  "monthly_returns": [
+    {
+      "year": 2026,
+      "month": 4,
+      "return_pct": 1.97
+    }
+  ],
+  "drawdowns": [
+    {
+      "date": "2026-03-14",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-03-17",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-03-18",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-03-19",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-03-20",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-03-21",
+      "drawdown_pct": -0.48
+    },
+    {
+      "date": "2026-03-24",
+      "drawdown_pct": -0.07
+    },
+    {
+      "date": "2026-03-25",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-03-26",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-03-27",
+      "drawdown_pct": -0.18
+    },
+    {
+      "date": "2026-03-28",
+      "drawdown_pct": -0.26
+    },
+    {
+      "date": "2026-03-31",
+      "drawdown_pct": -0.51
+    },
+    {
+      "date": "2026-04-01",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-04-02",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-04-03",
+      "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-04-07",
+      "drawdown_pct": 0.0
+    }
+  ],
+  "system_status": {
+    "last_trade": {
+      "ticker": "MRVL",
+      "side": "buy",
+      "qty": 0.0,
+      "time": null
+    },
+    "active_strategies": 3,
+    "portfolio_allocation": [
+      {
+        "ticker": "ACHC",
+        "pct": 4.9
+      },
+      {
+        "ticker": "MRVL",
+        "pct": 2.4
+      },
+      {
+        "ticker": "NBIS",
+        "pct": 0.3
+      },
+      {
+        "ticker": "TRMD",
+        "pct": 5.0
+      }
+    ]
+  },
+  "risk_limits": {
+    "max_position_pct": 15,
+    "max_deployment_pct": 50,
+    "daily_loss_limit_pct": 5,
+    "max_drawdown_pct": 20,
+    "kill_switch_active": false
+  },
+  "metadata": {
+    "is_paper_trading": true,
+    "data_source": "alpaca",
+    "benchmark_available": true,
+    "insufficient_data": true
+  }
+}

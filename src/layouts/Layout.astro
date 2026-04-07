@@ -1,0 +1,57 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'melliHF Performance', description = 'AI-powered systematic trading performance dashboard' } = Astro.props;
+
+// Read performance data for dynamic OG description
+let ogDescription = description;
+try {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const dataPath = path.join(process.cwd(), 'public/data/performance.json');
+  if (fs.existsSync(dataPath)) {
+    const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+    const ret = data.summary?.total_return_pct;
+    const sharpe = data.summary?.sharpe_ratio;
+    if (typeof ret === 'number') {
+      ogDescription = `AI-powered trading system. ${ret >= 0 ? '+' : ''}${ret.toFixed(1)}% return`;
+      if (typeof sharpe === 'number') {
+        ogDescription += `, ${sharpe.toFixed(2)} Sharpe ratio`;
+      }
+      ogDescription += '.';
+    }
+  }
+} catch {}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={ogDescription} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content="/og-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

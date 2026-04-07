@@ -1,0 +1,97 @@
+/* melliHF Performance Site — Design Spec */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-primary: #08090d;
+  --bg-surface: #12141a;
+  --bg-elevated: #1a1d26;
+  --border: #2a2d38;
+  --text-primary: #e8e9ed;
+  --text-secondary: #8b8f9a;
+  --text-muted: #5a5e6b;
+  --accent: #10b981;
+  --negative: #ef4444;
+  --chart-grid: #1e2028;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --content-max: 1120px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+/* Section spacing */
+.section {
+  padding: var(--space-2xl) 0;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--space-lg);
+}
+
+/* Positive/negative values */
+.positive { color: var(--accent); }
+.negative { color: var(--negative); }
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section {
+    padding: 48px var(--space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

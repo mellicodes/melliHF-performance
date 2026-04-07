@@ -1,0 +1,102 @@
+---
+interface Props {
+  riskLimits: {
+    max_position_pct: number;
+    max_deployment_pct: number;
+    daily_loss_limit_pct: number;
+    max_drawdown_pct: number;
+    kill_switch_active: boolean;
+  };
+}
+
+const { riskLimits } = Astro.props;
+---
+
+<section class="section risk-management">
+  <div class="section-label">Risk Management</div>
+  <div class="section-title">Hard limits. No exceptions.</div>
+
+  <div class="risk-grid">
+    <div class="risk-box">
+      <div class="risk-value">{riskLimits.max_position_pct}%</div>
+      <div class="risk-label">Max Position</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-value">{riskLimits.max_deployment_pct}%</div>
+      <div class="risk-label">Max Deployment</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-value">-{riskLimits.daily_loss_limit_pct}%</div>
+      <div class="risk-label">Daily Loss Limit</div>
+    </div>
+    <div class="risk-box">
+      <div class="risk-value">-{riskLimits.max_drawdown_pct}%</div>
+      <div class="risk-label">Max Drawdown</div>
+    </div>
+  </div>
+
+  <div class="kill-switch">
+    <span class={`dot ${riskLimits.kill_switch_active ? 'triggered' : 'active'}`}></span>
+    <span class="kill-text">
+      {riskLimits.kill_switch_active ? 'Trading halted' : 'Kill switch active'}
+    </span>
+  </div>
+</section>
+
+<style>
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .risk-box {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+  }
+
+  .risk-value {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+  }
+
+  .risk-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .kill-switch {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+  .dot.triggered {
+    background: var(--negative);
+    box-shadow: 0 0 6px var(--negative);
+  }
+
+  .kill-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+</style>

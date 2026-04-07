@@ -1,0 +1,149 @@
+---
+---
+
+<section class="section how-it-works">
+  <div class="section-label">How It Works</div>
+  <div class="section-title">Five AI agents. One trading decision.</div>
+
+  <div class="pipeline">
+    <div class="node">
+      <div class="node-name">Research</div>
+      <div class="node-desc">Scans 500+ tickers daily for momentum, volume, and technical signals</div>
+    </div>
+    <div class="connector"><div class="arrow"></div></div>
+    <div class="node debate">
+      <div class="node-name">Debate</div>
+      <div class="debate-agents">
+        <span class="bull">Bull</span>
+        <span class="bear">Bear</span>
+      </div>
+      <div class="node-desc">Bull and bear AI agents argue both sides of every trade</div>
+    </div>
+    <div class="connector"><div class="arrow"></div></div>
+    <div class="node">
+      <div class="node-name">Trade</div>
+      <div class="node-desc">Position sizing via Kelly criterion, risk-adjusted for conviction</div>
+    </div>
+    <div class="connector"><div class="arrow"></div></div>
+    <div class="node">
+      <div class="node-name">Risk</div>
+      <div class="node-desc">Every order checked against hard limits before execution</div>
+    </div>
+    <div class="connector"><div class="arrow"></div></div>
+    <div class="node">
+      <div class="node-name">Execute</div>
+      <div class="node-desc">Bracket orders with stop-loss and take-profit via Alpaca</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    padding: var(--space-sm) 0;
+  }
+
+  .node {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-md);
+    min-width: 120px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .node.debate {
+    min-width: 180px;
+    flex: 1.5;
+  }
+
+  .node-name {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .node-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .debate-agents {
+    display: flex;
+    gap: var(--space-sm);
+    margin: var(--space-xs) 0;
+  }
+
+  .debate-agents span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+  }
+
+  .bull { color: var(--accent); }
+  .bear { color: var(--negative); }
+
+  .connector {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-xs);
+  }
+
+  .arrow {
+    width: 20px;
+    height: 2px;
+    background: var(--border);
+    position: relative;
+  }
+
+  .arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    border: 5px solid transparent;
+    border-left-color: var(--accent);
+  }
+
+  @media (max-width: 767px) {
+    .pipeline {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .node, .node.debate {
+      min-width: unset;
+    }
+
+    .connector {
+      justify-content: center;
+      padding: var(--space-xs) 0;
+    }
+
+    .arrow {
+      width: 2px;
+      height: 20px;
+    }
+
+    .arrow::after {
+      right: -4px;
+      top: unset;
+      bottom: 0;
+      border: 5px solid transparent;
+      border-top-color: var(--accent);
+      border-left-color: transparent;
+    }
+  }
+</style>

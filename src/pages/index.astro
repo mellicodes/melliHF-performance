@@ -1,0 +1,216 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import RiskManagement from '../components/RiskManagement.astro';
+import { DataFreshness } from '../components/DataFreshness';
+import { EquityCurve } from '../components/EquityCurve';
+import { MetricsCards } from '../components/MetricsCards';
+import { SystemStatus } from '../components/SystemStatus';
+import { DrawdownChart } from '../components/DrawdownChart';
+import type { PerformanceData, BenchmarksData } from '../types';
+
+// Read data at build time via node:fs
+let data: PerformanceData | null = null;
+let benchmarks: BenchmarksData = { benchmarks: {} };
+
+try {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const perfPath = path.join(process.cwd(), 'public/data/performance.json');
+  const benchPath = path.join(process.cwd(), 'public/data/benchmarks.json');
+  if (fs.existsSync(perfPath)) {
+    data = JSON.parse(fs.readFileSync(perfPath, 'utf-8'));
+  }
+  if (fs.existsSync(benchPath)) {
+    benchmarks = JSON.parse(fs.readFileSync(benchPath, 'utf-8'));
+  }
+} catch {}
+
+const lastUpdated = data ? new Date(data.generated_at).toLocaleDateString('en-US', {
+  month: 'short', day: 'numeric',
+}) : 'No data';
+
+const isPaper = data?.metadata?.is_paper_trading ?? true;
+---
+
+<Layout>
+  {/* Header */}
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <span class="wordmark">melliHF</span>
+        <span class="status-dot"></span>
+      </div>
+      <div class="header-right">
+        <span class="updated">Last updated: {lastUpdated}</span>
+      </div>
+    </div>
+    <div class="brand-line">
+      <span class="positioning">AI-Powered Systematic Trading</span>
+      {isPaper && <span class="badge">PAPER</span>}
+    </div>
+  </header>
+
+  {/* Data Freshness Warning */}
+  {data && <DataFreshness client:only="react" data={data} />}
+
+  {/* Hero: Equity Curve */}
+  {data && <EquityCurve client:only="react" data={data} benchmarks={benchmarks} />}
+
+  {/* Metrics Cards */}
+  {data && <MetricsCards client:only="react" data={data} />}
+
+  {/* System Status */}
+  {data && <SystemStatus client:only="react" data={data} />}
+
+  {/* How It Works */}
+  <HowItWorks />
+
+  {/* Drawdown Chart */}
+  {data && <DrawdownChart client:only="react" data={data} />}
+
+  {/* Risk Management */}
+  {data && <RiskManagement riskLimits={data.risk_limits} />}
+
+  {/* Footer */}
+  <footer class="section footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-period">
+          {isPaper ? 'Paper Trading Period' : 'Live Trading'}
+        </span>
+        {data?.trading_start_date && (
+          <span class="footer-since">Trading since {data.trading_start_date}</span>
+        )}
+      </div>
+      <div class="footer-right">
+        <a href="/tearsheet.pdf" download class="pdf-button">
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .header {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-lg) 0;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .wordmark {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+  .updated {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .brand-line {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+  }
+
+  .positioning {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.04em;
+  }
+
+  .footer {
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-period {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .footer-since {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-left: var(--space-md);
+  }
+
+  .pdf-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 10px 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-decoration: none;
+    min-height: 44px;
+    transition: background 0.15s;
+  }
+
+  .pdf-button:hover {
+    background: var(--bg-elevated);
+  }
+
+  @media (max-width: 767px) {
+    .header-right {
+      display: none;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      gap: var(--space-md);
+      text-align: center;
+    }
+
+    .footer-since {
+      display: block;
+      margin-left: 0;
+      margin-top: var(--space-xs);
+    }
+  }
+</style>
