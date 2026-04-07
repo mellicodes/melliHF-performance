@@ -45,11 +45,24 @@ function AnimatedNumber({ value, suffix = '', prefix = '', decimals = 1 }: {
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
 
     if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+
+    // Fallback: if already visible on mount, animate after short delay
+    const fallback = setTimeout(() => {
+      if (!animated.current) {
+        animated.current = true;
+        setDisplay(`${prefix}${value.toFixed(decimals)}${suffix}`);
+        observer.disconnect();
+      }
+    }, 500);
+
+    return () => {
+      clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, [value, suffix, prefix, decimals]);
 
   return <span ref={ref}>{display}</span>;
@@ -97,7 +110,7 @@ export function MetricsCards({ data }: Props) {
 
   return (
     <div className="section" style={{ paddingTop: 'var(--space-lg)', paddingBottom: 'var(--space-lg)' }}>
-      <div style={{
+      <div className="metrics-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 1fr)',
         gap: 'var(--space-md)',
@@ -108,7 +121,7 @@ export function MetricsCards({ data }: Props) {
             borderRadius: 'var(--radius-md)',
             padding: 'var(--space-lg)',
           }}>
-            <div style={{
+            <div className="metric-value" style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 48,
               fontWeight: 600,
@@ -148,11 +161,16 @@ export function MetricsCards({ data }: Props) {
       </div>
       <style>{`
         @media (max-width: 767px) {
-          .section > div:first-child {
+          .metrics-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
-          .section > div:first-child > div > div:first-child {
-            font-size: 36px !important;
+          .metrics-grid .metric-value {
+            font-size: 32px !important;
+          }
+        }
+        @media (max-width: 374px) {
+          .metrics-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
