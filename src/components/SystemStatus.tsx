@@ -22,7 +22,7 @@ export function SystemStatus({ data }: Props) {
 
   return (
     <div className="section">
-      <div className="section-label">System Status</div>
+      <h2 className="section-label">System Status</h2>
       <div style={{
         display: 'grid',
         gridTemplateColumns: allocation.length > 0 ? '1fr 1fr' : '1fr',

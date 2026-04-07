@@ -132,8 +132,30 @@ export function EquityCurve({ data, benchmarks }: Props) {
 
   const benchmarkNames = Object.keys(benchmarks.benchmarks);
 
+  // Compute outperformance vs SPY
+  const spyData = benchmarks.benchmarks['SPY'];
+  const lastPortfolio = data.equity_curve[data.equity_curve.length - 1]?.portfolio ?? 100;
+  const lastSpy = spyData?.[spyData.length - 1]?.value ?? 100;
+  const outperformance = (lastPortfolio - 100) - (lastSpy - 100);
+
   return (
     <div className="section" style={{ paddingBottom: 0 }}>
+      <h1 className="section-label">Performance</h1>
+      <p style={{
+        fontFamily: 'var(--font-sans)',
+        fontSize: 20,
+        fontWeight: 500,
+        color: 'var(--text-primary)',
+        lineHeight: 1.3,
+        marginBottom: 'var(--space-lg)',
+      }}>
+        {data.summary.total_return_pct >= 0 ? '+' : ''}{data.summary.total_return_pct.toFixed(1)}% return
+        {spyData && outperformance > 0 && (
+          <span style={{ color: 'var(--text-secondary)', fontWeight: 400 }}>
+            {' '}— outperforming SPY by {outperformance.toFixed(1)}pp
+          </span>
+        )}
+      </p>
       <div style={{ position: 'relative' }}>
         <div ref={chartRef} style={{ height: 500, borderRadius: 'var(--radius-md)' }} />
         {benchmarkNames.length > 0 && (

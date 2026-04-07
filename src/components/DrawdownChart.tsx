@@ -67,7 +67,7 @@ export function DrawdownChart({ data }: Props) {
 
   return (
     <div className="section">
-      <div className="section-label">Drawdown History</div>
+      <h2 className="section-label">Drawdown History</h2>
       <div ref={chartRef} style={{ height: 250, borderRadius: 'var(--radius-md)' }} />
     </div>
   );
