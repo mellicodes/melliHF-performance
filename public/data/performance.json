@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-07T17:55:26.484243+00:00",
+  "generated_at": "2026-04-08T01:39:47.888887+00:00",
   "trading_start_date": "2026-03-14",
   "live_trading_start_date": null,
   "summary": {
@@ -162,15 +162,15 @@
     "portfolio_allocation": [
       {
         "ticker": "ACHC",
-        "pct": 4.9
+        "pct": 4.4
       },
       {
         "ticker": "MRVL",
-        "pct": 2.4
+        "pct": 2.6
       },
       {
         "ticker": "NBIS",
-        "pct": 0.3
+        "pct": 0.4
       },
       {
         "ticker": "TRMD",
