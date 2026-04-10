@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-04-09T23:10:19.248577+00:00",
+  "generated_at": "2026-04-10T23:04:26.510403+00:00",
   "trading_start_date": "2026-03-14",
   "live_trading_start_date": null,
   "summary": {
-    "total_return_pct": 2.81,
+    "total_return_pct": 3.12,
     "sharpe_ratio": null,
     "max_drawdown_pct": -0.51,
     "win_rate_pct": 100.0,
     "total_trades": 19,
     "avg_hold_days": 0.0,
-    "current_equity": 102809.23,
+    "current_equity": 103118.63,
     "starting_equity": 100000
   },
   "equity_curve": [
@@ -84,13 +84,17 @@
     {
       "date": "2026-04-09",
       "portfolio": 102.81
+    },
+    {
+      "date": "2026-04-10",
+      "portfolio": 103.12
     }
   ],
   "monthly_returns": [
     {
       "year": 2026,
       "month": 4,
-      "return_pct": 2.46
+      "return_pct": 2.76
     }
   ],
   "drawdowns": [
@@ -165,6 +169,10 @@
     {
       "date": "2026-04-09",
       "drawdown_pct": 0.0
+    },
+    {
+      "date": "2026-04-10",
+      "drawdown_pct": 0.0
     }
   ],
   "system_status": {
@@ -178,7 +186,7 @@
     "portfolio_allocation": [
       {
         "ticker": "ACHC",
-        "pct": 5.3
+        "pct": 5.0
       },
       {
         "ticker": "NBIS",
@@ -186,7 +194,7 @@
       },
       {
         "ticker": "TRMD",
-        "pct": 5.0
+        "pct": 4.9
       }
     ]
   },
