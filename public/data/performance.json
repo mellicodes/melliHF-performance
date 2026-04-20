@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-04-17T23:08:59.167264+00:00",
+  "generated_at": "2026-04-20T23:10:01.407740+00:00",
   "trading_start_date": "2026-03-14",
   "live_trading_start_date": null,
   "summary": {
-    "total_return_pct": 3.14,
+    "total_return_pct": 3.23,
     "sharpe_ratio": null,
     "max_drawdown_pct": -0.51,
     "win_rate_pct": 100.0,
-    "total_trades": 19,
+    "total_trades": 20,
     "avg_hold_days": 0.0,
-    "current_equity": 103140.22,
+    "current_equity": 103228.78,
     "starting_equity": 100000
   },
   "equity_curve": [
@@ -108,13 +108,17 @@
     {
       "date": "2026-04-17",
       "portfolio": 103.14
+    },
+    {
+      "date": "2026-04-18",
+      "portfolio": 103.23
     }
   ],
   "monthly_returns": [
     {
       "year": 2026,
       "month": 4,
-      "return_pct": 2.79
+      "return_pct": 2.87
     }
   ],
   "drawdowns": [
@@ -213,24 +217,32 @@
     {
       "date": "2026-04-17",
       "drawdown_pct": -0.03
+    },
+    {
+      "date": "2026-04-18",
+      "drawdown_pct": 0.0
     }
   ],
   "system_status": {
     "last_trade": {
-      "ticker": "MRVL",
-      "side": "sell",
-      "qty": 6.0,
-      "time": "2026-04-09T18:45:39.312488+00:00"
+      "ticker": "ROIV",
+      "side": "buy",
+      "qty": 52.0,
+      "time": "2026-04-20T17:25:26.991731+00:00"
     },
     "active_strategies": 3,
     "portfolio_allocation": [
       {
         "ticker": "ACHC",
-        "pct": 5.2
+        "pct": 5.3
       },
       {
         "ticker": "NBIS",
         "pct": 0.5
+      },
+      {
+        "ticker": "ROIV",
+        "pct": 1.5
       },
       {
         "ticker": "TRMD",
