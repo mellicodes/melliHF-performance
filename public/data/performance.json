@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-04-23T23:25:07.134342+00:00",
+  "generated_at": "2026-04-24T23:08:35.603783+00:00",
   "trading_start_date": "2026-03-14",
   "live_trading_start_date": null,
   "summary": {
-    "total_return_pct": 3.39,
+    "total_return_pct": 3.27,
     "sharpe_ratio": null,
     "max_drawdown_pct": -0.51,
     "win_rate_pct": 100.0,
     "total_trades": 21,
     "avg_hold_days": 0.0,
-    "current_equity": 103386.38,
+    "current_equity": 103267.48,
     "starting_equity": 100000
   },
   "equity_curve": [
@@ -124,13 +124,17 @@
     {
       "date": "2026-04-23",
       "portfolio": 103.39
+    },
+    {
+      "date": "2026-04-24",
+      "portfolio": 103.27
     }
   ],
   "monthly_returns": [
     {
       "year": 2026,
       "month": 4,
-      "return_pct": 3.03
+      "return_pct": 2.91
     }
   ],
   "drawdowns": [
@@ -245,6 +249,10 @@
     {
       "date": "2026-04-23",
       "drawdown_pct": -0.06
+    },
+    {
+      "date": "2026-04-24",
+      "drawdown_pct": -0.18
     }
   ],
   "system_status": {
@@ -258,7 +266,7 @@
     "portfolio_allocation": [
       {
         "ticker": "ACHC",
-        "pct": 5.3
+        "pct": 5.2
       },
       {
         "ticker": "ROIV",
@@ -266,7 +274,7 @@
       },
       {
         "ticker": "TRMD",
-        "pct": 5.0
+        "pct": 5.2
       }
     ]
   },
